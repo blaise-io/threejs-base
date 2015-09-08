@@ -73,7 +73,6 @@ function randBetween(min, max) {
             side: THREE.DoubleSide
         });
         sphere = new THREE.Mesh(geometry, material);
-        sphere.rotation.set(0, Math.PI/2, 0);
         objectParent.add(sphere);
 
         // Add the parent to the scene.
