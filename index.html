@@ -11,6 +11,42 @@
     <script src="lib/three.js"></script>
     <script src="lib/orbit-controls.js"></script>
     <script src="app/setup-canvas.js"></script>
-    <script src="app/add-cube.js"></script>
+    <!--<script src="app/add-cube.js"></script>-->
+
+    <script src="snake/Controls.js"></script>
+    <script src="snake/Draw.js"></script>
+    <script src="snake/Game.js"></script>
+    <script src="snake/GameArea.js"></script>
+    <script src="snake/Snake.js"></script>
+    <script src="snake/Spawner.js"></script>
+    <script src="snake/Spawn.js"></script>
+    <script>
+        var CONST = {
+            TILE_SIZE: 10, // Assignment says 16
+            WIDTH: 50,
+            HEIGHT: 50,
+            UP: 0,
+            RIGHT: 1,
+            DOWN: 2,
+            LEFT: 3
+        };
+
+        (function main() {
+
+            var draw = new Draw();
+            var gameArea = new GameArea();
+            var spawner = new Spawner(gameArea, draw);
+            var snake = new Snake(gameArea, spawner);
+            var controls = new Controls(snake);
+
+            draw.register(gameArea);
+            draw.register(snake);
+
+            renderCallbacks.push(draw.drawThings.bind(draw));
+
+
+        })();
+
+    </script>
 </body>
 </html>

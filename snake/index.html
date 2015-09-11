@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Snake</title>
+        <style>
+            body {
+                background: black;
+                color: white;
+                text-align: center;
+            }
+            * {
+                font: normal normal 30px/30px helvetica, arial, sans-serif;
+            }
+            var {
+                font-weight: bold;
+                color: black;
+                background: white;
+                border-radius: 1.5em;
+                width: 1.7em;
+                height: 1.7em;
+                line-height: 1.9em;
+                display: inline-block;
+            }
+            canvas {
+                border: 10px solid #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Points <var>0</var></h1>
+        <!-- Assignment says 800 -->
+        <canvas width="500" height="500" style="background:#eee"></canvas>
+        <script src="Controls.js"></script>
+        <script src="Draw.js"></script>
+        <script src="Game.js"></script>
+        <script src="GameArea.js"></script>
+        <script src="Snake.js"></script>
+        <script src="Spawner.js"></script>
+        <script src="Spawn.js"></script>
+        <script>
+            var CONST = {
+                TILE_SIZE: 10, // Assignment says 16
+                WIDTH: 50,
+                HEIGHT: 50,
+                UP: 0,
+                RIGHT: 1,
+                DOWN: 2,
+                LEFT: 3
+            };
+
+            (function main() {
+
+                var draw = new Draw();
+                var gameArea = new GameArea();
+                var spawner = new Spawner(gameArea, draw);
+                var snake = new Snake(gameArea, spawner);
+                var controls = new Controls(snake);
+
+                draw.register(gameArea);
+                draw.register(snake);
+
+            })();
+
+        </script>
+    </body>
+</html>
